@@ -1,0 +1,9 @@
+/vendor/
+/var/
+/.git/
+
+/README.md
+/.gitignore
+/.phpunit.result.cache
+/.php-cs-fixer.cache
+/temp

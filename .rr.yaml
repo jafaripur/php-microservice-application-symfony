@@ -1,0 +1,20 @@
+version: "2.7"
+
+service:
+  topics:
+    command: "php bin/console user-service:listen first-consumer"
+    process_num: 10
+    exec_timeout: 0
+    remain_after_exit: true
+    restart_sec: 5
+
+  emits:
+    command: "php bin/console user-service:listen second-consumer"
+    process_num: 2
+    exec_timeout: 0
+    remain_after_exit: true
+    restart_sec: 5
+
+logs:
+  mode: production
+  encoding: console

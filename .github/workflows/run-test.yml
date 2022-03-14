@@ -1,0 +1,40 @@
+name: Tests
+
+on:
+  push:
+    branches: ['dev']
+    path:
+      - .github/workflows/run-test.yml
+      - src/**
+      - tests/**
+      - docker/**
+      - composer.lock
+      - composer.json
+      - codeception.yml
+      - .dockerignore
+      - docker-compose.yml
+  pull_request:
+    branches: ['dev']
+    path:
+      - .github/workflows/run-test.yml
+      - src/**
+      - tests/**
+      - docker/**
+      - composer.lock
+      - composer.json
+      - .dockerignore
+      - codeception.yml
+      - docker-compose.yml
+
+jobs:
+
+  tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker images
+      run: docker-compose build -q --build-arg APP_SECRET=${{ secrets.app_secret }}
+    - name: Run test
+      run: docker-compose up micro

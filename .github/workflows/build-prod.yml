@@ -1,0 +1,38 @@
+name: Build Master Image
+
+on:
+  push:
+    branches: ['master']
+    path:
+      - .github/workflows/build-prod.yml
+      - app/**
+      - tests/**
+      - docker/**
+      - composer.lock
+      - composer.json
+      - codeception.yml
+      - .dockerignore
+      - docker-compose.yml
+  pull_request:
+    branches: ['master']
+    path:
+      - .github/workflows/build-prod.yml
+      - app/**
+      - tests/**
+      - docker/**
+      - composer.lock
+      - composer.json
+      - .dockerignore
+      - codeception.yml
+      - docker-compose.yml
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build -f docker/Dockerfile.prod -t my-micro-app:$(date +%s) . --build-arg APP_SECRET=${{ secrets.app_secret_prod }}
