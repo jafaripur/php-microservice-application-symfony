@@ -50,7 +50,6 @@ services:
             $processorConsumers:
                 - 'App\Queue\Consumer\ConsumerFirst'
                 - 'App\Queue\Consumer\ConsumerSecond'
-            $serializer: null
         
 
     Araz\Service\User\UserService:
