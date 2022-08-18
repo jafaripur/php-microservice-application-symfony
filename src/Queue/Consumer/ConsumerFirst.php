@@ -30,6 +30,7 @@ final class ConsumerFirst extends ProcessorConsumer
 
         // Workers
         yield \App\Queue\Processor\User\Worker\UserProfileAnalysisWorker::class;
+
         yield \App\Queue\Processor\User\Worker\UserProfileUpdateNotificationWorker::class;
     }
 }

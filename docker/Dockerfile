@@ -1,4 +1,4 @@
-FROM php:8.0.17-cli-alpine3.15
+FROM php:8.1-cli-alpine
 
 LABEL description="Testing Dockerfile for build in https://github.com/jafaripur/php-microservice-application-symfony"
 LABEL org.opencontainers.image.authors="mjafaripur@yahoo.com"

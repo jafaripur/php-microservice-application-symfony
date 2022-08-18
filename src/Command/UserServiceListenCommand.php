@@ -13,6 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class UserServiceListenCommand extends Command
 {
     protected static $defaultName = 'user-service:listen';
+
     protected static $defaultDescription = 'Listen to user service';
 
     public function __construct(
@@ -28,7 +29,7 @@ class UserServiceListenCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->queue->getConsumer()->consume(0, (array) $input->getArgument('consumers'));
+        $this->queue->getConsumer()->consume(0, (array)$input->getArgument('consumers'));
 
         return Command::SUCCESS;
     }
